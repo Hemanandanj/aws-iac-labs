@@ -8,7 +8,7 @@ phases:
       - pip install cfn-lint
   build:
     commands:
-      - echo "Validating CloudFormation template!"
+      - echo "Validating CloudFormation template..."
       - aws cloudformation validate-template --template-body file://cf.yaml
       - echo "Linting template..."
       - cfn-lint cf.yaml
