@@ -1,0 +1,15 @@
+version: 0.2
+
+phases:
+  install:
+    runtime-versions:
+      python: 3.12
+    commands:
+      - pip install cfn-lint
+  build:
+    commands:
+      - echo "Validating CloudFormation template..."
+      - aws cloudformation validate-template --template-body file://cf.yaml
+      - echo "Linting template..."
+      - cfn-lint cf.yaml
+      - echo "Template checks passed."
